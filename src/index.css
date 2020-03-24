@@ -4,9 +4,7 @@
   box-sizing: border-box;
 }
 
-body {
-  margin: 50px auto;
-  width: 100%;
-  max-width: 768px;
-  text-align: center;
+html {
+  background-color: #f9f7f7;
+  font-family: sans-serif;
 }

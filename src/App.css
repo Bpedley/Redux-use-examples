@@ -1,21 +1,5 @@
-button {
-  border-radius: 5px;
-  padding: 8px 40px;
-  margin: 10px;
-  background-color: lightslategrey;
-  color: aliceblue;
-  font-weight: bold;
-  font-size: 2em;
-}
-
-h1 {
-  margin: 50px 0 10px 0;
-}
-
-hr {
-  margin: 10px 0 15px 0;
-}
-
-h3 {
-  margin: 25px 0 5px 0;
+.content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }

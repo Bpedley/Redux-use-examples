@@ -1,0 +1,37 @@
+.counter {
+  text-align: center;
+}
+
+.counter-title {
+  margin: 50px 0 8px;
+}
+
+.counter-input {
+  margin: 15px 0;
+  padding: 8px 12px;
+  font-size: 1.2rem;
+}
+
+span {
+  font-size: 3rem;
+}
+
+.counter-btn {
+  background-color: #112d4e;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 1.1rem;
+  margin-right: 10px;
+
+  &:hover {
+    background-color: #205897;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}

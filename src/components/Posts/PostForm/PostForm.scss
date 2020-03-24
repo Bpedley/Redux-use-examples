@@ -1,0 +1,33 @@
+.post-form {
+  text-align: left;
+  margin: 50px 25px;
+}
+
+.post-form-title {
+  text-align: center;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 8px;
+  resize: vertical;
+}
+
+.submit-btn {
+  background-color: #112d4e;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 1.1rem;
+
+  &:hover {
+    background-color: #205897;
+  }
+}
