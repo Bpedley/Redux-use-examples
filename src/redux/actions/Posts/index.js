@@ -2,7 +2,9 @@ import { FETCH_POSTS, NEW_POST } from "./types";
 
 export const fetchPosts = () => {
   return dispatch => {
-    fetch("http://jsonplaceholder.typicode.com/posts?_limit=20")
+    fetch(
+      "https://cors-anywhere.herokuapp.com/http://jsonplaceholder.typicode.com/posts?_limit=20"
+    )
       .then(res => res.json())
       .then(posts =>
         dispatch({
@@ -15,13 +17,16 @@ export const fetchPosts = () => {
 
 export const createPost = postData => {
   return dispatch => {
-    fetch("https://jsonplaceholder.typicode.com/posts", {
-      method: "POST",
-      body: JSON.stringify(postData),
-      headers: new Headers({
-        "Content-Type": "application/json"
-      })
-    })
+    fetch(
+      "https://cors-anywhere.herokuapp.com/https://jsonplaceholder.typicode.com/posts",
+      {
+        method: "POST",
+        body: JSON.stringify(postData),
+        headers: new Headers({
+          "Content-Type": "application/json"
+        })
+      }
+    )
       .then(res => res.json())
       .then(post => {
         dispatch({
