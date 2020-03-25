@@ -1,4 +1,4 @@
-import { FETCH_POSTS, NEW_POST } from "./types";
+import { FETCH_POSTS, NEW_POST, REQUEST_POSTS } from "./types";
 
 export const fetchPosts = () => {
   return dispatch => {
@@ -22,9 +22,9 @@ export const createPost = postData => {
       {
         method: "POST",
         body: JSON.stringify(postData),
-        headers: new Headers({
+        headers: {
           "Content-Type": "application/json"
-        })
+        }
       }
     )
       .then(res => res.json())
@@ -34,5 +34,11 @@ export const createPost = postData => {
           payload: post
         });
       });
+  };
+};
+
+export const requestPosts = () => {
+  return {
+    type: REQUEST_POSTS
   };
 };

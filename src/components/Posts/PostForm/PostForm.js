@@ -11,6 +11,8 @@ const PostForm = ({ createPost }) => {
     e.preventDefault();
     const post = { title, body };
     createPost(post);
+    setTitle("");
+    setBody("");
   };
 
   return (
