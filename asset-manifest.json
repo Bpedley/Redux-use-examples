@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/Redux-use-examples/static/css/main.e17f85bf.chunk.css",
-    "main.js": "/Redux-use-examples/static/js/main.607e2f6a.chunk.js",
-    "main.js.map": "/Redux-use-examples/static/js/main.607e2f6a.chunk.js.map",
+    "main.js": "/Redux-use-examples/static/js/main.21a11b4b.chunk.js",
+    "main.js.map": "/Redux-use-examples/static/js/main.21a11b4b.chunk.js.map",
     "runtime-main.js": "/Redux-use-examples/static/js/runtime-main.ee4bf826.js",
     "runtime-main.js.map": "/Redux-use-examples/static/js/runtime-main.ee4bf826.js.map",
-    "static/js/2.d9d8512a.chunk.js": "/Redux-use-examples/static/js/2.d9d8512a.chunk.js",
-    "static/js/2.d9d8512a.chunk.js.map": "/Redux-use-examples/static/js/2.d9d8512a.chunk.js.map",
+    "static/js/2.0521d835.chunk.js": "/Redux-use-examples/static/js/2.0521d835.chunk.js",
+    "static/js/2.0521d835.chunk.js.map": "/Redux-use-examples/static/js/2.0521d835.chunk.js.map",
     "index.html": "/Redux-use-examples/index.html",
-    "precache-manifest.dc13c3b11c21b1674cca85403e537ae5.js": "/Redux-use-examples/precache-manifest.dc13c3b11c21b1674cca85403e537ae5.js",
+    "precache-manifest.99ddc879193b38c7464a9ec86cf9a539.js": "/Redux-use-examples/precache-manifest.99ddc879193b38c7464a9ec86cf9a539.js",
     "service-worker.js": "/Redux-use-examples/service-worker.js",
     "static/css/main.e17f85bf.chunk.css.map": "/Redux-use-examples/static/css/main.e17f85bf.chunk.css.map",
-    "static/js/2.d9d8512a.chunk.js.LICENSE.txt": "/Redux-use-examples/static/js/2.d9d8512a.chunk.js.LICENSE.txt"
+    "static/js/2.0521d835.chunk.js.LICENSE.txt": "/Redux-use-examples/static/js/2.0521d835.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.ee4bf826.js",
-    "static/js/2.d9d8512a.chunk.js",
+    "static/js/2.0521d835.chunk.js",
     "static/css/main.e17f85bf.chunk.css",
-    "static/js/main.607e2f6a.chunk.js"
+    "static/js/main.21a11b4b.chunk.js"
   ]
 }
