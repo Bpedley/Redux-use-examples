@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
-import { createPost } from "../../../redux/actions/Posts";
 import "./PostForm.scss";
 
 const PostForm = ({ createPost }) => {
@@ -52,4 +50,4 @@ const PostForm = ({ createPost }) => {
   );
 };
 
-export default connect(null, { createPost })(PostForm);
+export default PostForm;

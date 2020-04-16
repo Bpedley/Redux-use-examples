@@ -1,13 +1,17 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchPosts, requestPosts } from "../../redux/actions/Posts";
+import {
+  fetchPosts,
+  requestPosts,
+  createPost
+} from "../../redux/actions/Posts";
 import PostForm from "./PostForm/PostForm";
 import Post from "./Post/Post";
 import "./Posts.scss";
 
 const uniqid = require("uniqid");
 
-const Posts = ({ fetchPosts, requestPosts, posts, isFetching }) => {
+const Posts = ({ fetchPosts, requestPosts, createPost, posts, isFetching }) => {
   useEffect(() => {
     requestPosts();
     fetchPosts();
@@ -17,7 +21,7 @@ const Posts = ({ fetchPosts, requestPosts, posts, isFetching }) => {
     <div>
       <hr />
       <h1 className="posts-title">Posts example</h1>
-      <PostForm />
+      <PostForm createPost={createPost} />
       {isFetching ? (
         <h3>Loading posts...</h3>
       ) : (
@@ -39,4 +43,8 @@ const mapStateToProps = state => ({
   isFetching: state.posts.isFetching
 });
 
-export default connect(mapStateToProps, { fetchPosts, requestPosts })(Posts);
+export default connect(mapStateToProps, {
+  fetchPosts,
+  requestPosts,
+  createPost
+})(Posts);
