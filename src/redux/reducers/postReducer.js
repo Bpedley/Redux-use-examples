@@ -1,8 +1,9 @@
 import {
   GET_POSTS,
   NEW_POST,
-  REQUEST_POSTS,
-  SET_INPUT_FIELDS
+  FETCHING_TOGGLE,
+  SET_INPUT_FIELDS,
+  IS_POSTING_DATA
 } from "../actions/Posts/types";
 
 const initialState = {
@@ -10,33 +11,40 @@ const initialState = {
   item: {},
   title: "",
   body: "",
-  isFetching: false
+  isFetching: false,
+  isPosting: false
 };
 
 const postReducer = (state = initialState, action) => {
   switch (action.type) {
-    case REQUEST_POSTS:
+    case FETCHING_TOGGLE:
       return {
         ...state,
-        isFetching: true
+        isFetching: !state.isFetching
       };
     case GET_POSTS:
       return {
         ...state,
-        items: action.payload,
-        isFetching: false
+        items: action.payload
       };
     case NEW_POST:
       return {
         ...state,
         items: [action.payload, ...state.items],
-        item: action.payload
+        item: action.payload,
+        title: "",
+        body: ""
       };
     case SET_INPUT_FIELDS:
       const { name, value } = action.payload;
       return {
         ...state,
         [name]: value
+      };
+    case IS_POSTING_DATA:
+      return {
+        ...state,
+        isPosting: !state.isPosting
       };
     default:
       return state;

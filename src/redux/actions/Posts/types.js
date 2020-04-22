@@ -1,4 +1,5 @@
-export const GET_POSTS = "FETCH_POSTS";
+export const GET_POSTS = "GET_POSTS";
 export const NEW_POST = "NEW_POST";
-export const REQUEST_POSTS = "REQUEST_POSTS";
+export const FETCHING_TOGGLE = "FETCHING_TOGGLE";
 export const SET_INPUT_FIELDS = "SET_INPUT_FIELDS";
+export const IS_POSTING_DATA = "IS_POSTING_DATA";

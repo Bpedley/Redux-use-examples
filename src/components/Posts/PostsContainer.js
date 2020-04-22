@@ -16,7 +16,8 @@ const PostsContainer = ({
   posts,
   isFetching,
   title,
-  body
+  body,
+  isPosting
 }) => {
   useEffect(() => {
     getPosts();
@@ -31,6 +32,7 @@ const PostsContainer = ({
         body={body}
         setInputFields={setInputFields}
         createPost={createPost}
+        isPosting={isPosting}
       />
       <Posts isFetching={isFetching} posts={posts} />
     </div>
@@ -41,7 +43,8 @@ const mapStateToProps = state => ({
   posts: state.posts.items,
   isFetching: state.posts.isFetching,
   title: state.posts.title,
-  body: state.posts.body
+  body: state.posts.body,
+  isPosting: state.posts.isPosting
 });
 
 export default connect(mapStateToProps, {
