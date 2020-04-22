@@ -1,21 +1,23 @@
-import { FETCH_POSTS, NEW_POST, REQUEST_POSTS } from "./types";
+import { GET_POSTS, NEW_POST, REQUEST_POSTS, SET_INPUT_FIELDS } from "./types";
 
-export const fetchPosts = () => {
+export const getPosts = () => {
   return dispatch => {
+    dispatch({ type: REQUEST_POSTS });
     fetch(
       "https://cors-anywhere.herokuapp.com/http://jsonplaceholder.typicode.com/posts?_limit=20"
     )
       .then(res => res.json())
       .then(posts =>
         dispatch({
-          type: FETCH_POSTS,
+          type: GET_POSTS,
           payload: posts
         })
       );
   };
 };
 
-export const createPost = postData => {
+export const createPost = (e, postData) => {
+  e.preventDefault();
   return dispatch => {
     fetch(
       "https://cors-anywhere.herokuapp.com/https://jsonplaceholder.typicode.com/posts",
@@ -37,8 +39,14 @@ export const createPost = postData => {
   };
 };
 
-export const requestPosts = () => {
+export const setInputFields = e => {
+  const { name, value } = e.target;
+
   return {
-    type: REQUEST_POSTS
+    type: SET_INPUT_FIELDS,
+    payload: {
+      name,
+      value
+    }
   };
 };

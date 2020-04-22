@@ -1,30 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import "./PostForm.scss";
 
-const PostForm = ({ createPost }) => {
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
-
-  const onSubmit = e => {
-    e.preventDefault();
-    const post = { title, body };
-    createPost(post);
-    setTitle("");
-    setBody("");
-  };
-
+const PostForm = ({ title, body, setInputFields, createPost }) => {
   return (
     <div className="post-form">
       <h2 className="post-form-title">Add Post</h2>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={e => createPost(e, { title, body })}>
         <div>
           <label>
             Title
             <input
               type="text"
               name="title"
-              onChange={e => setTitle(e.target.value)}
               value={title}
+              onChange={setInputFields}
             />
           </label>
           <br />
@@ -33,11 +22,7 @@ const PostForm = ({ createPost }) => {
         <div>
           <label>
             Text
-            <textarea
-              name="body"
-              onChange={e => setBody(e.target.value)}
-              value={body}
-            />
+            <textarea name="body" value={body} onChange={setInputFields} />
           </label>
           <br />
         </div>

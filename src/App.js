@@ -2,8 +2,8 @@ import React from "react";
 import { Provider } from "react-redux";
 import "./App.css";
 
-import Counter from "./components/Counter/Counter";
-import Posts from "./components/Posts/Posts";
+import CounterContainer from "./components/Counter/CounterContainer";
+import PostsContainer from "./components/Posts/PostsContainer";
 
 import store from "./store";
 
@@ -11,8 +11,8 @@ const App = () => {
   return (
     <Provider store={store}>
       <div className="content">
-        <Counter />
-        <Posts />
+        <CounterContainer />
+        <PostsContainer />
       </div>
     </Provider>
   );

@@ -1,49 +1,25 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
-import { increment, decrement, reset } from "../../redux/actions/Counter";
+import React from "react";
 import "./Counter.scss";
 
-const Counter = ({ increment, decrement, reset, count }) => {
-  const [input, setInput] = useState(1);
-
-  const handleReset = () => {
-    setInput(1);
-    reset();
-  };
-
-  const handleInputChange = e => {
-    const value = e.target.value.replace(/\D/, "");
-    setInput(value);
-  };
-
+const Counter = ({ count, increment, decrement, countValue, setCount, reset }) => {
   return (
     <div className="counter">
       <h1 className="counter-title">Counter example</h1>
       <span>{count}</span>
-      <h3>Change counter by {input}</h3>
-      <input
-        className="counter-input"
-        value={input}
-        onChange={handleInputChange}
-      />
+      <h3>Change counter by {countValue}</h3>
+      <input className="counter-input" value={countValue} onChange={setCount} />
       <br />
-      <button className="counter-btn" onClick={() => increment(input)}>
+      <button className="counter-btn" onClick={() => increment(countValue)}>
         +
       </button>
-      <button className="counter-btn" onClick={() => decrement(input)}>
+      <button className="counter-btn" onClick={() => decrement(countValue)}>
         -
       </button>
-      <button className="counter-btn" onClick={handleReset}>
+      <button className="counter-btn" onClick={reset}>
         Reset
       </button>
     </div>
   );
 };
 
-const mapStateToProps = state => ({
-  count: state.counter.count
-});
-
-export default connect(mapStateToProps, { increment, decrement, reset })(
-  Counter
-);
+export default Counter;

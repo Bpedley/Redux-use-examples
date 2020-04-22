@@ -1,8 +1,15 @@
-import { FETCH_POSTS, NEW_POST, REQUEST_POSTS } from "../actions/Posts/types";
+import {
+  GET_POSTS,
+  NEW_POST,
+  REQUEST_POSTS,
+  SET_INPUT_FIELDS
+} from "../actions/Posts/types";
 
 const initialState = {
   items: [],
   item: {},
+  title: "",
+  body: "",
   isFetching: false
 };
 
@@ -13,7 +20,7 @@ const postReducer = (state = initialState, action) => {
         ...state,
         isFetching: true
       };
-    case FETCH_POSTS:
+    case GET_POSTS:
       return {
         ...state,
         items: action.payload,
@@ -24,6 +31,12 @@ const postReducer = (state = initialState, action) => {
         ...state,
         items: [action.payload, ...state.items],
         item: action.payload
+      };
+    case SET_INPUT_FIELDS:
+      const { name, value } = action.payload;
+      return {
+        ...state,
+        [name]: value
       };
     default:
       return state;

@@ -1,11 +1,13 @@
 import {
   INCREMENT_COUNTER,
   DECREMENT_COUNTER,
-  RESET_COUNTER
+  RESET_COUNTER,
+  SET_COUNTER
 } from "../actions/Counter/types";
 
 const initialState = {
-  count: 0
+  count: 0,
+  input: 1
 };
 
 const counterReducer = (state = initialState, action) => {
@@ -22,8 +24,13 @@ const counterReducer = (state = initialState, action) => {
       };
     case RESET_COUNTER:
       return {
+        count: 0,
+        input: 1
+      };
+    case SET_COUNTER:
+      return {
         ...state,
-        count: 0
+        input: action.payload
       };
     default:
       return state;
