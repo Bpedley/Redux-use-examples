@@ -3,51 +3,48 @@ import {
   NEW_POST,
   FETCHING_TOGGLE,
   SET_INPUT_FIELDS,
-  IS_POSTING_DATA
+  IS_POSTING_DATA,
+  ERROR
 } from "./types";
+import { API } from "../../../api";
 
-export const getPosts = () => {
-  return dispatch => {
+export const getPosts = () => async dispatch => {
+  dispatch({ type: FETCHING_TOGGLE });
+  const response = await API.getPosts();
+
+  if (response.statusText === "OK") {
+    dispatch({ type: GET_POSTS, payload: response.data });
     dispatch({ type: FETCHING_TOGGLE });
-    fetch(
-      "https://cors-anywhere.herokuapp.com/http://jsonplaceholder.typicode.com/posts?_limit=20"
-    )
-      .then(res => res.json())
-      .then(posts => {
-        dispatch({
-          type: GET_POSTS,
-          payload: posts
-        });
-        dispatch({ type: FETCHING_TOGGLE });
-      });
-  };
+  } else {
+    dispatch({
+      type: ERROR,
+      payload: {
+        errorMessage: response,
+        errorType: "getPosts"
+      }
+    });
+    dispatch({ type: FETCHING_TOGGLE });
+  }
 };
 
-export const createPost = (e, postData) => {
+export const createPost = (e, postData) => async dispatch => {
   e.preventDefault();
-  return dispatch => {
+  dispatch({ type: IS_POSTING_DATA });
+  const response = await API.createPost(postData);
+
+  if (response.statusText === "Created") {
+    dispatch({ type: NEW_POST, payload: response.data });
     dispatch({ type: IS_POSTING_DATA });
-    fetch(
-      "https://cors-anywhere.herokuapp.com/https://jsonplaceholder.typicode.com/posts",
-      {
-        method: "POST",
-        body: JSON.stringify(postData),
-        headers: {
-          "Content-Type": "application/json"
-        }
+  } else {
+    dispatch({
+      type: ERROR,
+      payload: {
+        errorMessage: response,
+        errorType: "createPost"
       }
-    )
-      .then(res => res.json())
-      .then(post => {
-        dispatch({
-          type: NEW_POST,
-          payload: post
-        });
-        dispatch({
-          type: IS_POSTING_DATA
-        });
-      });
-  };
+    });
+    dispatch({ type: IS_POSTING_DATA });
+  }
 };
 
 export const setInputFields = e => {
@@ -55,9 +52,6 @@ export const setInputFields = e => {
 
   return {
     type: SET_INPUT_FIELDS,
-    payload: {
-      name,
-      value
-    }
+    payload: { name, value }
   };
 };

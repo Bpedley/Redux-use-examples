@@ -17,7 +17,9 @@ const PostsContainer = ({
   isFetching,
   title,
   body,
-  isPosting
+  isPosting,
+  errorMessage,
+  errorType
 }) => {
   useEffect(() => {
     getPosts();
@@ -33,8 +35,15 @@ const PostsContainer = ({
         setInputFields={setInputFields}
         createPost={createPost}
         isPosting={isPosting}
+        errorMessage={errorMessage}
+        errorType={errorType}
       />
-      <Posts isFetching={isFetching} posts={posts} />
+      <Posts
+        isFetching={isFetching}
+        posts={posts}
+        errorMessage={errorMessage}
+        errorType={errorType}
+      />
     </div>
   );
 };
@@ -44,7 +53,9 @@ const mapStateToProps = state => ({
   isFetching: state.posts.isFetching,
   title: state.posts.title,
   body: state.posts.body,
-  isPosting: state.posts.isPosting
+  isPosting: state.posts.isPosting,
+  errorMessage: state.posts.errorMessage,
+  errorType: state.posts.errorType
 });
 
 export default connect(mapStateToProps, {

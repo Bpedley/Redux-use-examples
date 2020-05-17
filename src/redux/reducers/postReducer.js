@@ -3,7 +3,8 @@ import {
   NEW_POST,
   FETCHING_TOGGLE,
   SET_INPUT_FIELDS,
-  IS_POSTING_DATA
+  IS_POSTING_DATA,
+  ERROR
 } from "../actions/Posts/types";
 
 const initialState = {
@@ -12,7 +13,9 @@ const initialState = {
   title: "",
   body: "",
   isFetching: false,
-  isPosting: false
+  isPosting: false,
+  errorMessage: "",
+  errorType: ""
 };
 
 const postReducer = (state = initialState, action) => {
@@ -28,6 +31,7 @@ const postReducer = (state = initialState, action) => {
         items: action.payload
       };
     case NEW_POST:
+      console.log(action);
       return {
         ...state,
         items: [action.payload, ...state.items],
@@ -45,6 +49,12 @@ const postReducer = (state = initialState, action) => {
       return {
         ...state,
         isPosting: !state.isPosting
+      };
+    case ERROR:
+      return {
+        ...state,
+        errorMessage: action.payload.errorMessage,
+        errorType: action.payload.errorType
       };
     default:
       return state;

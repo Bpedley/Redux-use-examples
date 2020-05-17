@@ -4,8 +4,10 @@ import "./Posts.scss";
 
 const uniqid = require("uniqid");
 
-const Posts = ({ isFetching, posts }) => {
-  if (isFetching) {
+const Posts = ({ isFetching, posts, errorType, errorMessage }) => {
+  if (errorType === "getPosts") {
+    return <h3>{errorMessage}</h3>;
+  } else if (isFetching) {
     return <h3>Loading posts...</h3>;
   }
 
