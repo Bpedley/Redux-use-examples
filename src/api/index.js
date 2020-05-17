@@ -1,7 +1,8 @@
 import Axios from "axios";
 
 const instance = Axios.create({
-  baseURL: "http://jsonplaceholder.typicode.com/posts"
+  baseURL:
+    "https://cors-anywhere.herokuapp.com/http://jsonplaceholder.typicode.com/posts"
 });
 
 export const API = {
