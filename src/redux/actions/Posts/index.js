@@ -3,17 +3,19 @@ import {
   NEW_POST,
   FETCHING_TOGGLE,
   SET_INPUT_FIELDS,
-  ERROR
+  ERROR,
+  FETCH_TYPE
 } from "./types";
 import { API } from "../../../api";
 
 export const getPosts = () => async dispatch => {
-  dispatch({ type: FETCHING_TOGGLE, payload: "getPosts" });
+  dispatch({ type: FETCHING_TOGGLE });
+  dispatch({ type: FETCH_TYPE, payload: "getPosts" });
   const response = await API.getPosts();
 
   if (response.statusText === "OK") {
     dispatch({ type: GET_POSTS, payload: response.data });
-    dispatch({ type: FETCHING_TOGGLE, payload: "getPosts" });
+    dispatch({ type: FETCHING_TOGGLE });
   } else {
     dispatch({
       type: ERROR,
@@ -22,18 +24,19 @@ export const getPosts = () => async dispatch => {
         errorType: "getPosts"
       }
     });
-    dispatch({ type: FETCHING_TOGGLE, payload: "getPosts" });
+    dispatch({ type: FETCHING_TOGGLE });
   }
 };
 
 export const createPost = (e, postData) => async dispatch => {
   e.preventDefault();
-  dispatch({ type: FETCHING_TOGGLE, payload: "createPost" });
+  dispatch({ type: FETCHING_TOGGLE });
+  dispatch({ type: FETCH_TYPE, payload: "createPost" });
   const response = await API.createPost(postData);
 
   if (response.statusText === "Created") {
     dispatch({ type: NEW_POST, payload: response.data });
-    dispatch({ type: FETCHING_TOGGLE, payload: "createPost" });
+    dispatch({ type: FETCHING_TOGGLE });
   } else {
     dispatch({
       type: ERROR,
@@ -42,7 +45,7 @@ export const createPost = (e, postData) => async dispatch => {
         errorType: "createPost"
       }
     });
-    dispatch({ type: FETCHING_TOGGLE, payload: "createPost" });
+    dispatch({ type: FETCHING_TOGGLE });
   }
 };
 

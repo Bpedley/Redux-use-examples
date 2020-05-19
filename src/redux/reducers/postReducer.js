@@ -3,7 +3,8 @@ import {
   NEW_POST,
   FETCHING_TOGGLE,
   SET_INPUT_FIELDS,
-  ERROR
+  ERROR,
+  FETCH_TYPE
 } from "../actions/Posts/types";
 
 const initialState = {
@@ -22,7 +23,11 @@ const postReducer = (state = initialState, action) => {
     case FETCHING_TOGGLE:
       return {
         ...state,
-        isFetching: !state.isFetching,
+        isFetching: !state.isFetching
+      };
+    case FETCH_TYPE:
+      return {
+        ...state,
         fetchType: action.payload
       };
     case GET_POSTS:

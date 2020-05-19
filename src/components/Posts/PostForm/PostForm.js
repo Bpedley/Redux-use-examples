@@ -7,9 +7,7 @@ const PostForm = ({
   setInputFields,
   createPost,
   isFetching,
-  fetchType,
-  errorMessage,
-  errorType
+  fetchType
 }) => {
   return (
     <div className="post-form">
