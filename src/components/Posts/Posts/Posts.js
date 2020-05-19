@@ -4,16 +4,14 @@ import "./Posts.scss";
 
 const uniqid = require("uniqid");
 
-const Posts = ({ isFetching, posts, errorType, errorMessage }) => {
-  if (errorType === "getPosts") {
-    return <h3>{errorMessage}</h3>;
-  } else if (isFetching) {
-    return <h3>Loading posts...</h3>;
-  }
-
+const Posts = ({ isFetching, fetchType, posts, errorType, errorMessage }) => {
   return (
     <div>
       <h3>Posts</h3>
+      {isFetching && fetchType === "getPosts" ? (
+        <h3 className="loader">Loading...</h3>
+      ) : null}
+      {errorType ? <h3 className="error">Error: {errorMessage}</h3> : null}
       <div className="posts">
         {posts.map(post => (
           <Post data={post} key={uniqid()} />

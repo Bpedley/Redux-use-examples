@@ -6,7 +6,8 @@ const PostForm = ({
   body,
   setInputFields,
   createPost,
-  isPosting,
+  isFetching,
+  fetchType,
   errorMessage,
   errorType
 }) => {
@@ -35,10 +36,14 @@ const PostForm = ({
           <br />
         </div>
         <br />
-        <button type="submit" className="submit-btn" disabled={isPosting}>
-          Submit<div className={isPosting ? "lds-dual-ring" : null}></div>
+        <button type="submit" className="submit-btn" disabled={isFetching}>
+          Submit
+          <div
+            className={
+              isFetching && fetchType === "createPost" ? "lds-dual-ring" : null
+            }
+          ></div>
         </button>
-        {errorType === "createPost" ? <p color="red">{errorMessage}</p> : null}
       </form>
     </div>
   );

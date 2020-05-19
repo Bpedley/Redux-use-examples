@@ -9,18 +9,9 @@ import PostForm from "./PostForm/PostForm";
 import Posts from "./Posts/Posts";
 import "./PostsContainer.scss";
 
-const PostsContainer = ({
-  getPosts,
-  setInputFields,
-  createPost,
-  posts,
-  isFetching,
-  title,
-  body,
-  isPosting,
-  errorMessage,
-  errorType
-}) => {
+const PostsContainer = props => {
+  const { getPosts, ...postFormProps } = props;
+
   useEffect(() => {
     getPosts();
   }, [getPosts]);
@@ -29,20 +20,13 @@ const PostsContainer = ({
     <div>
       <hr />
       <h1>Posts example</h1>
-      <PostForm
-        title={title}
-        body={body}
-        setInputFields={setInputFields}
-        createPost={createPost}
-        isPosting={isPosting}
-        errorMessage={errorMessage}
-        errorType={errorType}
-      />
+      <PostForm {...postFormProps} />
       <Posts
-        isFetching={isFetching}
-        posts={posts}
-        errorMessage={errorMessage}
-        errorType={errorType}
+        isFetching={props.isFetching}
+        fetchType={props.fetchType}
+        posts={props.posts}
+        errorMessage={props.errorMessage}
+        errorType={props.errorType}
       />
     </div>
   );
@@ -51,9 +35,9 @@ const PostsContainer = ({
 const mapStateToProps = state => ({
   posts: state.posts.items,
   isFetching: state.posts.isFetching,
+  fetchType: state.posts.fetchType,
   title: state.posts.title,
   body: state.posts.body,
-  isPosting: state.posts.isPosting,
   errorMessage: state.posts.errorMessage,
   errorType: state.posts.errorType
 });

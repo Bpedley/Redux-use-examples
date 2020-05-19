@@ -5,3 +5,12 @@
 h3 {
   text-align: center;
 }
+
+.error {
+  color: rgba(255, 0, 0, 0.5);
+}
+
+.loader,
+.error {
+  margin-top: 1rem;
+}
